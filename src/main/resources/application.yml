@@ -2,10 +2,9 @@ spring:
   application:
     name: XinhaoChat
   datasource:
-    # 修正默认值：useSSL=true，更新主机地址，移除无效参数
-    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://opper.proxy.rlwy.net:21191/railway?useSSL=true&serverTimezone=UTC&allowPublicKeyRetrieval=true&createDatabaseIfNotExist=true&zeroDateTimeBehavior=convertToNull}
-    username: ${SPRING_DATASOURCE_USERNAME:root}
-    password: ${SPRING_DATASOURCE_PASSWORD:zWzRSLEMaKVrYBgdxDAtjGymJjPHCrLp}
+    url: jdbc:mysql://root:zWzRSLEMaKVrYBgdxDAtjGymJjPHCrLp@hopper.proxy.rlwy.net:21191/railway/xinhao_chat?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&createDatabaseIfNotExist=true
+    username: root
+    password: zWzRSLEMaKVrYBgdxDAtjGymJjPHCrLp
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
@@ -14,11 +13,9 @@ spring:
     properties:
       hibernate:
         format_sql: true
-        # 手动指定 Dialect，解决无法识别的报错
-        dialect: org.hibernate.dialect.MySQL8Dialect
   servlet:
     multipart:
       max-file-size: 50MB
       max-request-size: 50MB
 server:
-  port: ${PORT:8080}
+  port: 8080
