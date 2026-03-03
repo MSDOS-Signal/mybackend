@@ -2,9 +2,10 @@ spring:
   application:
     name: XinhaoChat
   datasource:
-    url: jdbc:mysql://root:zWzRSLEMaKVrYBgdxDAtjGymJjPHCrLp@hopper.proxy.rlwy.net:21191/xinhao_chat?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&createDatabaseIfNotExist=true
-    username: root
-    password: zWzRSLEMaKVrYBgdxDAtjGymJjPHCrLp
+    # 核心修正：1. 移除URL里的用户名密码 2. 显式指定数据库名railway 3. 开启SSL
+    url: jdbc:mysql://hopper.proxy.rlwy.net:21191/railway?useSSL=true&serverTimezone=UTC&allowPublicKeyRetrieval=true&createDatabaseIfNotExist=true
+    username: root  # 单独配置用户名（规范，避免解析错误）
+    password: zWzRSLEMaKVrYBgdxDAtjGymJjPHCrLp  # 单独配置密码
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
@@ -13,6 +14,7 @@ spring:
     properties:
       hibernate:
         format_sql: true
+        default_schema: railway  # 强制指定默认Schema为railway，外键自动指向该库的表
   servlet:
     multipart:
       max-file-size: 50MB
