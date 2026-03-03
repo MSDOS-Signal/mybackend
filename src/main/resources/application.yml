@@ -2,7 +2,7 @@ spring:
   application:
     name: XinhaoChat
   datasource:
-    url: jdbc:mysql://root:zWzRSLEMaKVrYBgdxDAtjGymJjPHCrLp@hopper.proxy.rlwy.net:21191/railway/xinhao_chat?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&createDatabaseIfNotExist=true
+    url: jdbc:mysql://root:zWzRSLEMaKVrYBgdxDAtjGymJjPHCrLp@hopper.proxy.rlwy.net:21191/xinhao_chat?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&createDatabaseIfNotExist=true
     username: root
     password: zWzRSLEMaKVrYBgdxDAtjGymJjPHCrLp
     driver-class-name: com.mysql.cj.jdbc.Driver
