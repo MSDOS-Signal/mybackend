@@ -57,7 +57,7 @@ public class AiService {
                 .map(user -> {
                     // Update avatar if needed
                     if (!"/uploads/ai_avatar.jpg".equals(user.getAvatar())) {
-                        user.setAvatar("/uploads/ai_avatar.jpg");
+                        user.setAvatar("https://raw.githubusercontent.com/MSDOS-Signal/mybackend/refs/heads/main/uploads/ai_avatar.jpg");
                         return userRepository.save(user);
                     }
                     return user;
