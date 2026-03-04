@@ -15,9 +15,8 @@ spring:
       hibernate:
         format_sql: true
         default_schema: railway  # 强制指定默认Schema为railway，外键自动指向该库的表
-  servlet:
-    multipart:
-      max-file-size: 50MB
-      max-request-size: 50MB
+  jackson:
+    time-zone: Asia/Shanghai
+    date-format: yyyy-MM-dd HH:mm:ss
 server:
   port: 8080
