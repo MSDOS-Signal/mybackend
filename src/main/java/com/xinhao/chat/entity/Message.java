@@ -37,7 +37,13 @@ public class Message {
     @JoinColumn(name = "reply_to_message_id")
     private Message replyToMessage;
 
-    @CreationTimestamp
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private LocalDateTime createTime;
+
+    @PrePersist
+    protected void onCreate() {
+        if (createTime == null) {
+            createTime = LocalDateTime.now();
+        }
+    }
 }
