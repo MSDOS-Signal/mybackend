@@ -25,6 +25,13 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
         
+        // 跳过 OPTIONS 预检请求，避免 CORS 问题
+        String method = request.getMethod();
+        if ("OPTIONS".equalsIgnoreCase(method)) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+        
         String authHeader = request.getHeader("Authorization");
         
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
