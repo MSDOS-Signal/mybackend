@@ -31,9 +31,14 @@ public class SecurityConfig {
             .csrf(AbstractHttpConfigurer::disable)
             .cors(cors -> cors.configurationSource(corsConfigurationSource()))
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/auth/**", "/uploads/**", "/ws/**").permitAll()
-                .requestMatchers("/api/friends/**", "/api/moments/**", "/api/files/**", "/api/messages/**", "/api/groups/**").authenticated()
-                .anyRequest().authenticated()
+                // 静态资源必须放在最前面，优先匹配
+                .requestMatchers("/uploads/**").permitAll()
+                // 公开 API
+                .requestMatchers("/api/auth/**", "/ws/**").permitAll()
+                // 其他 API 需要认证
+                .requestMatchers("/api/**").authenticated()
+                // 默认允许所有（包括静态页面等）
+                .anyRequest().permitAll()
             )
             .addFilterBefore(new TokenAuthenticationFilter(tokenService), UsernamePasswordAuthenticationFilter.class);
             
